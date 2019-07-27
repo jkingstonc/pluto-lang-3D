@@ -14,6 +14,9 @@ As pluto was designed to be compiled on-the-fly, the language supports build in 
 		"var x = 123"
 	)
 	io::print(x)
+	
+# Native C# code
+Pluto provides an easy to use method to provide native interfaces to C# code via script-accessable calls. This allows the language to be used in cases where a specificly taylored solution is desired for a task
 
 # Examples
 ### Hello World
