@@ -63,13 +63,15 @@ public class Parser
     {
         consume(Token.Type.ClassDefine);
         Token name = consume(Token.Type.Identifier, "Expected class name identifier after class decleration");
-        VariableExpr superclass = null;
+        Expression superclass = null;
         List<DefStmt> members = new List<DefStmt>();
         List<FunctionStmt> methods = new List<FunctionStmt>();
         // Check if the class extends
         if (consume(Token.Type.Extends) != null)
         {
-            superclass = new VariableExpr(consume(Token.Type.Identifier, "Expected super class identifier after extends keyword"));
+            // Get the superclass which can be a namespace value or a variable identifier
+            superclass = namespace_value();
+            Console.WriteLine(superclass);
         }
         consume(Token.Type.LeftCurly, "Expected '{' for class body decleration");
         // Parse methods here
@@ -508,6 +510,7 @@ public class Parser
         return higher_precidence;
     }
 
+    // Check if we are referencing a value in a specific namespace
     private Expression namespace_value()
     {
         Expression higher_precidence = single_vals();

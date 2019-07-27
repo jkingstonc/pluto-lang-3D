@@ -109,11 +109,11 @@ public class NamespaceStmt : Statement
 public class ClassStmt : Statement
 {
     public Token name;
-    public VariableExpr superclass;
+    public Expression superclass;
     List<DefStmt> members;
     public List<FunctionStmt> methods;
 
-    public ClassStmt(Token name, VariableExpr superclass, List<DefStmt> members, List<FunctionStmt> methods)
+    public ClassStmt(Token name, Expression superclass, List<DefStmt> members, List<FunctionStmt> methods)
     {
         this.name = name;
         this.superclass = superclass;
