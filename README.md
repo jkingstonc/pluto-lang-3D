@@ -136,5 +136,6 @@ we can assign any declared value to a variable, e.g. assigning a class to a vari
      
 #### Bug Fix
 
+- Built in compilation doesn't resolve compiled variables
 - Heavily optimise 'visit_binary'
 - Increase stack overflow limit
