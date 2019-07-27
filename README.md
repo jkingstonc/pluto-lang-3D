@@ -41,6 +41,7 @@ Pluto is focued around namespaces, this allows for reuse of variable names, and 
 	io::print(example::x)
 ### Comments
 Currently, Pluto only allows for single-line comments
+
 	# this is a comment!
 
 ### Variables
@@ -129,8 +130,10 @@ we can assign any declared value to a variable, e.g. assigning a class to a vari
 
 - Static methods/members
 - Class default methods: default 'tostring', 'plus', 'minus' etc
+- Abstract classes
 - Add more flexible exceptions
      
 #### Bug Fix
 
-* Increase stack overflow limit
+- Heavily optimise 'visit_binary'
+- Increase stack overflow limit
