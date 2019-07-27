@@ -1,0 +1,11 @@
+﻿namespace io
+{
+	func print(contents)
+	{
+		print_native(contents)
+	}
+	func get
+	{
+		return get_native()
+	}
+}

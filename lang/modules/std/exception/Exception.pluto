@@ -1,0 +1,10 @@
+﻿namespace exception
+{
+	class Exception
+	{
+		func Exception(message)
+		{
+			this.message = message
+		}
+	}
+}

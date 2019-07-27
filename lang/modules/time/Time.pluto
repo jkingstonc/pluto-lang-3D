@@ -1,0 +1,20 @@
+﻿namespace time
+{
+	class Time
+	{
+		func Time
+		{
+			this.time = time_native()
+		}
+	}
+
+	func difference(time1, time2)
+	{
+		return timediff_native(time1, time2)
+	}
+
+	func sleep(milis)
+	{
+		timesleep_native(milis)
+	}
+}

@@ -1,0 +1,7 @@
+﻿namespace lang
+{
+	func compile(code)
+	{
+		compile_native(code)
+	}
+}

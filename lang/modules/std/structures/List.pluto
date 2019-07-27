@@ -1,0 +1,26 @@
+﻿namespace list
+{
+	class List
+	{
+		func List(data)
+		{
+			this.contents = createlist_native(data)
+		}
+		func size
+		{
+			return listsize_native(this.contents)
+		}
+		func add(data)
+		{
+			this.contents = addlist_native(this.contents, data)
+		}
+		func get(index)
+		{
+			return indexlist_native(this.contents, index)
+		}
+		func tostring
+		{
+			return tostringlist_native(this.contents)
+		}
+	}
+}
