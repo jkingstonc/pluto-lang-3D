@@ -1,7 +1,7 @@
 # Pluto!
 
-<p align="center">
-![](https://i.imgur.com/Dvm9Eyh.png =250x250)
+<p align="center" width="250" height="250">
+![](https://i.imgur.com/Dvm9Eyh.png)
 </p>
 
 
