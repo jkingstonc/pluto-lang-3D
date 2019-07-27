@@ -128,7 +128,6 @@ we can assign any declared value to a variable, e.g. assigning a class to a vari
 
 #### Language Design
 
-- Variable namespace class inheritance
 - Static methods/members
 - Class default methods: default 'tostring', 'plus', 'minus' etc
 - Abstract classes
