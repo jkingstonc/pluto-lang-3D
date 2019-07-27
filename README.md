@@ -1,8 +1,7 @@
 # Pluto!
 
-<p align="center" width="250" height="250">
+
 ![](https://i.imgur.com/Dvm9Eyh.png)
-</p>
 
 
 # What is Pluto?
