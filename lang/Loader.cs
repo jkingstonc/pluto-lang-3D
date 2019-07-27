@@ -4,9 +4,7 @@ using System.Text;
 
 class Loader
 {
-    //public static string pluto_env = "C:\\Program Files\\Pluto\\lang\\";
-    public static string pluto_env = "F:\\OneDrive - Lancaster University\\programming\\c#\\visual studio projects\\pluto\\Pluto\\ConsoleApp1\\";
-    //public static string pluto_env = "c:\\users\\44778\\OneDrive - Lancaster University\\programming\\c#\\visual studio projects\\pluto\\Pluto\\ConsoleApp1\\";
+    public static string pluto_env = "C:\\Program Files\\Pluto\\lang\\";
     // Path for native library
     public static string native_path = pluto_env + "nativeobj\\";
     // Path for all import modules
