@@ -19,6 +19,11 @@ Pluto supports native code extensions, this allows you to make Pluto do anything
 
 ***
 
+# Safety
+Using Pluto is the safest way of allowing access to a scripting langauge in game, typically runtime C# methods always expose the underlying structure of the engine, causing a serious vunerability issue. Pluto only exposes the structure that you want to expose.
+
+***
+
 # Usage
 This outlines the basics of using Pluto3D inside of Unity
 
