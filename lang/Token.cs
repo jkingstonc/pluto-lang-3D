@@ -18,6 +18,7 @@ public class Token
         Return,
         Continue,
 
+        Compile,
         NamespaceDefine,       // 'namespace'
         NamespaceValue,        // Retreiving a value from a namespace e.g. io::print
         Using,
@@ -91,6 +92,7 @@ public class Token
             { "this" , Type.This},
             { "return", Type.Return },
             { "continue", Type.Continue },
+            { "compile", Type.Compile },
             { "namespace", Type.NamespaceDefine},
             { "using", Type.Using },
             { "class", Type.ClassDefine },

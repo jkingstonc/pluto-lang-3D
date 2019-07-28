@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 public class Parser
@@ -107,6 +106,10 @@ public class Parser
     // Parse any type of standard independent statement
     private Statement statement()
     {
+        if(expect(Token.Type.Compile))
+        {
+            return compile();
+        }
         if (expect(Token.Type.Using))
         {
             return using_namespace();
@@ -164,6 +167,21 @@ public class Parser
             // This is just a random expression in code
             return expression_stmt();
         }
+    }
+
+    private CompileStmt compile()
+    {
+        if (consume(Token.Type.Compile) != null)
+        {
+            Expression code = expression();
+            // The code can be a variable, or a literal
+            if(code is VariableExpr || code is LiteralExpr)
+            {
+                return new CompileStmt(code);
+            }
+            throw new ParseExceptionUnexpectedToken("Code to compile must be variable or literal");
+        }
+        return null;
     }
 
     private UsingStmt using_namespace()
@@ -644,7 +662,7 @@ public class Parser
     {
         if (debug)
         {
-            Console.WriteLine("adding statement: " + statement);
+            Console.WriteLine("adding statement: " + statement.GetType());
         }
         this.statements.Add(statement);
     }

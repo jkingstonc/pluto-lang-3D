@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-class Loader
+public class Loader
 {
     public static string pluto_env = "C:\\Program Files\\Pluto\\lang\\";
     // Path for native library
@@ -62,10 +62,6 @@ class Loader
     // get a change to load themself's
     public void load_natives()
     {
-        foreach (KeyValuePair<string, Callable> callable_native in LangNative.native_obj)
-        {
-            this.interpreter.add_native_obj(callable_native.Key, callable_native.Value);
-        }
         foreach (KeyValuePair<string, Callable> callable_native in IONative.native_obj)
         {
             this.interpreter.add_native_obj(callable_native.Key, callable_native.Value);
@@ -116,7 +112,7 @@ class Loader
     }
 
     // Compile a module to the interpreter
-    private void compile(string code)
+    public void compile(string code)
     {
         Lexer lexer = new Lexer();
         Parser parser = new Parser();

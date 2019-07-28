@@ -263,6 +263,11 @@ public class ScopeResolver : StatementVisitor, ExpressionVisitor
         return null;
     }
 
+    public void visit_compile(CompileStmt Compile_stmt)
+    {
+        resolve(Compile_stmt.code);
+    }
+
     public void visit_using(UsingStmt using_stmt)
     {
         if (this.namespaces.ContainsKey((string)using_stmt.namespace_identifier.value))

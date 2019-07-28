@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public interface StatementVisitor
 {
     // These return voids becuase statements cannot be evaluated
+    void visit_compile(CompileStmt compile_stmt);
     void visit_using(UsingStmt using_stmt);
     void visit_import(ImportStmt import_stmt);
     void visit_return(ReturnStmt return_stmt);
@@ -25,6 +26,21 @@ public interface StatementVisitor
 public abstract class Statement
 {
     public abstract void visit(StatementVisitor visitor);
+}
+
+public class CompileStmt : Statement
+{
+    public Expression code;
+
+    public CompileStmt(Expression code)
+    {
+        this.code = code;
+    }
+
+    public override void visit(StatementVisitor visitor)
+    {
+        visitor.visit_compile(this);
+    }
 }
 
 public class UsingStmt : Statement

@@ -15,16 +15,17 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
     private Dictionary<string, Scope> namespaces = new Dictionary<string, Scope>();
     // The current namespace we are using
     private string using_namespace=null;
-    private Loader loader;
+    // Loader for compiling modules
+    public Loader loader;
 
     private List<Statement> statements;
 
     public Interpreter()
     {
         debug = false;
-        loader = new Loader(this);
-        loader.load_natives();
-        loader.load_std_lib();
+        this.loader = new Loader(this);
+        this.loader.load_natives();
+        this.loader.load_std_lib();
         local_scope = global_scope;
     }
 
@@ -32,7 +33,7 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
     {
         if (debug)
         {
-            Console.WriteLine("=== Interpreting ===");
+            Console.WriteLine("=== INTERPRETING ===");
         }
         this.statements = statements;
         foreach (Statement statement in statements)
@@ -157,9 +158,11 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
 
     public object visit_assign(AssignExpr assign_expression)
     {
+        //Console.WriteLine("visiting assign: " + assign_expression.name.value+", "+local_scope.get(new Token(Token.Type.Identifier,"x")));
         object value = evaluate(assign_expression.value);
+        //Console.WriteLine("new value: "+value);
         // If the value is assigning to a local variable, then set it
-        if(local_depths.ContainsKey(assign_expression))
+        if (local_depths.ContainsKey(assign_expression))
         {
             int distance = local_depths[assign_expression];
             local_scope.assign_at(distance, assign_expression.name, value);
@@ -170,7 +173,6 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
             global_scope.assign(assign_expression.name, value);
         }
         return value;
-
     }
 
     // When assigning to a value in a specific namespace
@@ -684,6 +686,11 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
         return evaluate(group_expr.group);
     }
 
+    public void visit_compile(CompileStmt Compile_stmt)
+    {
+        this.loader.compile((string)evaluate(Compile_stmt.code));
+    }
+
     public void visit_using(UsingStmt using_stmt)
     {
         if (this.namespaces.ContainsKey((string)using_stmt.namespace_identifier.value))
@@ -696,7 +703,8 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
 
     public void visit_import(ImportStmt import_stmt)
     {
-        loader.import((string)import_stmt.file.value);
+        //this.loader.import((string)import_stmt.file.value);
+        this.loader.compile("var x = 2");
     }
 
     public void visit_return(ReturnStmt return_stmt)
