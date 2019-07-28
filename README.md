@@ -11,10 +11,12 @@ Pluto is an interpreted scripting language, for indended use in C# runtime envir
 # Runtime Compilation Design
 As pluto was designed to be compiled on-the-fly, the language supports build in compilation from within a script. Say we want to compile different code depending on a variable, in Pluto we can do that!
 
-	lang::compile(
-		"var x = 123"
-	)
-	io::print(x)
+	var code = "
+		var x = 1.23
+		x = True
+	"
+	compile code
+
 	
 # Native C# code
 Pluto provides an easy to use method to provide native interfaces to C# code via script-accessable calls. This allows the language to be used in cases where a specificly taylored solution is desired for a task
@@ -136,6 +138,5 @@ we can assign any declared value to a variable, e.g. assigning a class to a vari
      
 #### Bug Fix
 
-- Built in compilation doesn't resolve compiled variables
 - Heavily optimise 'visit_binary'
 - Increase stack overflow limit
