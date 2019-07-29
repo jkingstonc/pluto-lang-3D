@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
+using UnityEngine;
 
 public class PlutoRuntime
 {
@@ -13,9 +15,10 @@ public class PlutoRuntime
         this.parser = new Parser();
         this.interpreter = new Interpreter();
         this.scope_resolver = new ScopeResolver(this.interpreter);
+        UnityLoader.load_all(this.interpreter.loader);
     }
 
-    public void compile(string lines)
+    public IEnumerator compile(string lines)
     {
         try
         {
@@ -26,7 +29,8 @@ public class PlutoRuntime
         }
         catch (PlutoException exception)
         {
-            System.Console.WriteLine(exception.errror_msg);
+            System.Console.WriteLine(exception.error_msg);
         }
+        yield return null;
     }
 }

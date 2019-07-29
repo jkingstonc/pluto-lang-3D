@@ -4,7 +4,7 @@ using System.Text;
 
 public class Loader
 {
-    public static string pluto_env = "C:\\Program Files\\Pluto\\lang\\";
+    public static string pluto_env = ""; // Path to this script's folder here
     // Path for native library
     public static string native_path = pluto_env + "nativeobj\\";
     // Path for all import modules
@@ -62,37 +62,41 @@ public class Loader
     // get a change to load themself's
     public void load_natives()
     {
-        foreach (KeyValuePair<string, Callable> callable_native in IONative.native_obj)
+        foreach (KeyValuePair<string, Callable> callable_native in UnityNative.native_obj)
         {
-            this.interpreter.add_native_obj(callable_native.Key, callable_native.Value);
+            this.load_native(callable_native.Key, callable_native.Value);
         }
         foreach (KeyValuePair<string, Callable> callable_native in MathsNative.native_obj)
         {
-            this.interpreter.add_native_obj(callable_native.Key, callable_native.Value);
+            this.load_native(callable_native.Key, callable_native.Value);
         }
         foreach (KeyValuePair<string, Callable> callable_native in ListNative.native_obj)
         {
-            this.interpreter.add_native_obj(callable_native.Key, callable_native.Value);
+            this.load_native(callable_native.Key, callable_native.Value);
         }
         foreach (KeyValuePair<string, Callable> callable_native in PrimitivesNative.native_obj)
         {
-            this.interpreter.add_native_obj(callable_native.Key, callable_native.Value);
+            this.load_native(callable_native.Key, callable_native.Value);
         }
-        foreach (KeyValuePair<string, Callable> callable_native in TimeNative.native_obj)
-        {
-            this.interpreter.add_native_obj(callable_native.Key, callable_native.Value);
-        }
+    }
+
+    public void load_native(string name, Callable callable)
+    {
+        this.interpreter.add_native_obj(name, callable);
     }
 
     // Import a given module file
     private void import_module(string file)
     {
-        // Check if we haven't already loaded it
-        if (!loaded_modules.Contains(file))
+        if(!file.Contains(".meta"))
         {
-            loaded_modules.Add(file);
-            string contents = File.ReadAllText(file, Encoding.UTF8);
-            compile(contents);
+            // Check if we haven't already loaded it
+            if (!loaded_modules.Contains(file))
+            {
+                loaded_modules.Add(file);
+                string contents = File.ReadAllText(file, Encoding.UTF8);
+                compile(contents);
+            }
         }
     }
 

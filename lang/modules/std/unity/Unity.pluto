@@ -1,0 +1,7 @@
+﻿namespace unity
+{
+	func debug(msg)
+	{
+		debug_unity_native(msg)
+	}
+}

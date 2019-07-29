@@ -809,7 +809,7 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
             function.call(this,
                 new List<object>()
                     {
-                        exception_class.call(this, new List<object>(){ "[Caught Exception] "+exception.errror_msg })
+                        exception_class.call(this, new List<object>(){ "[Caught Exception] "+exception.error_msg })
                     }
                 ); ;
         }

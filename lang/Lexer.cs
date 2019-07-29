@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class Lexer
 {
@@ -19,12 +20,13 @@ public class Lexer
 
         if (debug)
         {
-            Console.WriteLine("=== LEXING ===");
+            Debug.Log("=== LEXING ===");
         }
         while (!end())
         {
             // Scan for the next token
             scan_token();
+
         }
         add_token(Token.Type.Terminator, null);
         return this.tokens;
@@ -37,11 +39,11 @@ public class Lexer
         {
             if (value != null)
             {
-                Console.WriteLine(token + " [" + value + "]");
+                Debug.Log(token + " [" + value + "]");
             }
             else
             {
-                Console.WriteLine(token);
+                Debug.Log(token);
             }
         }
         this.tokens.Add(new Token(token, value));

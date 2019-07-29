@@ -1,0 +1,29 @@
+﻿namespace Vector
+{
+	class Vector1
+	{
+		func Vector1(x)
+		{
+			this.x = x
+		}
+	}
+
+	class Vector2
+	{
+		func Vector2(x, y)
+		{
+			this.x = x
+			this.y = y
+		}
+	}
+
+	class Vector3
+	{
+		func Vector3(x, y, z)
+		{
+			this.x = x
+			this.y = y
+			this.z = z
+		}
+	}
+}
