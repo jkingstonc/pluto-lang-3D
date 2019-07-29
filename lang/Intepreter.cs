@@ -703,8 +703,7 @@ public class Interpreter : ExpressionVisitor, StatementVisitor
 
     public void visit_import(ImportStmt import_stmt)
     {
-        //this.loader.import((string)import_stmt.file.value);
-        this.loader.compile("var x = 2");
+        this.loader.import((string)import_stmt.file.value);
     }
 
     public void visit_return(ReturnStmt return_stmt)
