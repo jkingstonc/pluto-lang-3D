@@ -1,4 +1,6 @@
-![](https://i.imgur.com/jccT97C.png)
+<p align="center">
+  <img src=https://i.imgur.com/jccT97C.png>
+</p>
 
 ***
 # What is Pluto3D?
